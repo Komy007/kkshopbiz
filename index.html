@@ -64,7 +64,104 @@ td.highlight{color:var(--red);font-weight:700}
 .review-warn h4{color:#92400E;margin-bottom:.5rem}
 .review-ok li,.review-warn li{font-size:.85rem;margin-left:1rem;margin-bottom:.3rem;line-height:1.5}
 .icon-label{display:flex;align-items:center;gap:.5rem;font-weight:700;font-size:1rem;margin-bottom:.5rem}
-@media(max-width:700px){.grid-2,.grid-3{grid-template-columns:1fr}.kv-row{grid-template-columns:1fr}}
+
+/* ── Nav component styles ── */
+.nav-brand{font-size:1.15rem;font-weight:900;color:#fff;white-space:nowrap;flex-shrink:0;padding:.5rem .2rem}
+.nav-toggle{display:none;background:none;border:1px solid rgba(255,255,255,.35);color:#fff;font-size:1.1rem;padding:.25rem .55rem;border-radius:5px;cursor:pointer;flex-shrink:0;line-height:1.2}
+#nav-en,#nav-kr{display:flex;align-items:center;flex:1;min-width:0;gap:.3rem}
+nav ul.nav-list{display:flex;flex-wrap:wrap;list-style:none;padding:0;gap:2px;align-items:center}
+
+/* ── Comprehensive mobile styles ── */
+@media(max-width:768px){
+  /* Nav */
+  nav{padding:0}
+  .nav-inner{flex-wrap:nowrap;padding:.4rem .75rem;gap:.5rem;align-items:center}
+  #nav-en,#nav-kr{flex-wrap:wrap;gap:.3rem}
+  .nav-brand{font-size:1.05rem;flex:1}
+  .nav-toggle{display:inline-block}
+  nav ul.nav-list{
+    display:none;flex-direction:column;width:100%;padding:.4rem 0;
+    background:rgba(15,23,60,.98);border-top:1px solid rgba(255,255,255,.12);
+    position:absolute;top:100%;left:0;right:0;z-index:200;
+    max-height:70vh;overflow-y:auto
+  }
+  nav ul.nav-list.open{display:flex}
+  nav ul.nav-list li{width:100%}
+  nav ul.nav-list li a{padding:.75rem 1.2rem;font-size:.9rem;border-radius:0;border-bottom:1px solid rgba(255,255,255,.06)}
+  nav ul.nav-list li a:hover,nav ul.nav-list li a.active{background:var(--red);color:#fff;padding-left:1.5rem}
+  main{padding-top:52px}
+
+  /* Language toggle — always visible */
+  .lang-toggle-wrap{flex-shrink:0;margin-left:0;padding:.2rem .5rem;gap:.4rem}
+  .lang-toggle-wrap .lbl{font-size:.72rem}
+  .toggle-track{width:32px;height:18px}
+  .toggle-thumb{width:12px;height:12px;top:3px;left:3px}
+  [data-lang="ko"] .toggle-thumb{transform:translateX(14px)}
+
+  /* Slides */
+  .slide{padding:2rem 1rem;min-height:auto}
+  .slide-header{margin-bottom:1.2rem}
+  .slide-header h2{font-size:1.1rem}
+  .slide-header p{font-size:.78rem}
+
+  /* Cover */
+  .slide-cover::before{width:300px;height:300px;top:-80px;right:-60px}
+  .cover-logo{font-size:3.2rem}
+  .cover-btn{font-size:.92rem;padding:.65rem 1.4rem;display:block;margin:.8rem auto 0;max-width:260px;text-align:center}
+
+  /* Grids → single column */
+  .grid-2,.grid-3,.review-grid{grid-template-columns:1fr}
+
+  /* Stats — 2 column on mobile */
+  .stats-grid{grid-template-columns:1fr 1fr;gap:.75rem}
+  .stat-box{padding:.9rem .6rem}
+  .stat-val{font-size:1.55rem}
+  .stat-label{font-size:.7rem}
+
+  /* KV rows — stack label/value */
+  .kv-row{grid-template-columns:1fr;gap:.1rem}
+  .kv-key{padding-bottom:0;font-size:.82rem}
+  .kv-val{font-size:.83rem}
+
+  /* Cards */
+  .card{padding:1rem}
+
+  /* Tables — horizontal scroll */
+  table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;font-size:.76rem}
+  th{font-size:.72rem;padding:.4rem .35rem;white-space:nowrap}
+  td{padding:.4rem .35rem;font-size:.75rem}
+  td.label{font-size:.75rem;min-width:90px}
+
+  /* Tier table */
+  .tier-table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .tier-table th,.tier-table td{font-size:.8rem;padding:.45rem .6rem}
+
+  /* Info bars */
+  .info-bar{font-size:.82rem;padding:.7rem 1rem}
+
+  /* Review cards */
+  .review-ok,.review-warn{padding:.85rem}
+  .review-ok li,.review-warn li{font-size:.82rem}
+
+  /* Warning */
+  .warning{font-size:.8rem;padding:.7rem .9rem}
+
+  /* Source note */
+  .source-note{font-size:.74rem}
+
+  /* General text */
+  p{line-height:1.65}
+  li{font-size:.87rem;line-height:1.6}
+  h3{font-size:1rem}
+  h4{font-size:.93rem}
+}
+
+@media(max-width:400px){
+  .stats-grid{grid-template-columns:1fr}
+  .stat-val{font-size:1.7rem}
+  .cover-logo{font-size:2.8rem}
+  .slide{padding:1.5rem .85rem}
+}
 
 /* ── Language Toggle ── */
 .lang-toggle-wrap {
@@ -89,8 +186,8 @@ td.highlight{color:var(--red);font-weight:700}
 [data-lang="ko"] .lang-toggle-wrap .lbl.en{color:#C8D4F0;}
 [data-lang="ko"] .lang-toggle-wrap .lbl.ko{color:#fff;}
 
-/* nav brand + toggle row */
-.nav-inner {display:flex;align-items:center;gap:1rem;width:100%;}
+/* nav inner */
+.nav-inner{display:flex;align-items:center;gap:.6rem;width:100%;padding:.2rem .8rem}
 </style>
 </head>
 <body data-lang="en">
@@ -115,8 +212,8 @@ td.highlight{color:var(--red);font-weight:700}
   <li><a href="#closing">Investment Terms</a></li>
 </ul></div>
     <div id="nav-kr" hidden><div class="nav-brand">KK<span style="color:var(--red)">SHOP</span></div>
-<button class="nav-toggle" id="menuToggle" aria-label="Menu">☰</button>
-<ul class="nav-list" id="navList">
+<button class="nav-toggle" id="menuToggleKo" aria-label="Menu">☰</button>
+<ul class="nav-list" id="navListKo">
   <li><a href="#cover">홈</a></li>
   <li><a href="#summary">핵심 요약</a></li>
   <li><a href="#market">시장</a></li>
@@ -1454,10 +1551,21 @@ Inquiries · www.kkshop.cc · cambodia.bae@gmail.com
       el.classList.toggle('active', lang==='ko'));
   }
 
-  // ── mobile menu
-  const btn = document.getElementById('menuToggle');
-  const list = document.getElementById('navList');
-  if(btn && list) btn.addEventListener('click', ()=> list.classList.toggle('open'));
+  // ── mobile menu (both EN and KO navs)
+  function wireMenu(btnId, listId){
+    var b=document.getElementById(btnId), l=document.getElementById(listId);
+    if(b&&l) b.addEventListener('click',function(){
+      l.classList.toggle('open');
+    });
+  }
+  wireMenu('menuToggle','navList');
+  wireMenu('menuToggleKo','navListKo');
+  // Close menu on link click
+  document.querySelectorAll('.nav-list a').forEach(function(a){
+    a.addEventListener('click',function(){
+      document.querySelectorAll('.nav-list').forEach(function(u){u.classList.remove('open');});
+    });
+  });
 })();
 </script>
 </body>
